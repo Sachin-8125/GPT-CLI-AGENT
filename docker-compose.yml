@@ -1,15 +1,15 @@
 services:
-  wincliagent:
-    build: .
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: wincliagent:latest
     container_name: wincliagent
     env_file:
       - .env
-
     volumes:
-      -.:/app
+      - ./:/app
     working_dir: /app
-
     stdin_open: true
     tty: true
-    command: bash
+    command: python main.py
